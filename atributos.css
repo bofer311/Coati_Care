@@ -302,3 +302,28 @@ h6 {
   background: #007bb6 !important;
   color: #fff;
 }
+
+/* Estilos generales para los párrafos */
+.parrafo {
+  padding: 10px;
+  transition: background-color 0.3s, transform 0.3s, border 0.3s;
+}
+
+/* Efecto de resaltado al pasar el mouse */
+.parrafo:hover {
+  background-color: #e0cadf; /* Gris suave */
+  border: 2px solid #dcbdcd; /* Borde gris */
+  transform: scale(1.05);
+  z-index: 1;
+  position: relative;
+}
+
+/* Estilos para los títulos de las tarjetas */
+.card-title {
+  transition: color 0.3s; /* Transición suave del color */
+}
+
+/* Cambio de color al pasar el mouse sobre el título */
+.card-title:hover {
+  color: rgb(193, 65, 153); /* Color de texto cuando se pasa el mouse */
+}
