@@ -1,0 +1,304 @@
+/* limpia pagina al cargar*/
+* {
+  padding: 0;
+  margin: 0;
+  text-decoration: none;
+  list-style: none;
+  box-sizing: border-box;
+}
+/*Estilos barra Menu Principal*/
+.carrusel .navbar {
+  box-shadow: 1px 1px 5px;
+}
+.navbar-brand {
+  margin-left: 80px;
+}
+.navbar .navbar-brand {
+  color: #5e412a;
+}
+.navbar-nav {
+  margin-right: 80px;
+  color: #5e412a;
+}
+.nav-item a:hover {
+  background: #ccae93;
+  border-radius: 5px;
+  transition: 0.5s;
+  color: rgb(255, 255, 255);
+}
+.nav-item #turno {
+  border-style: solid;
+  border-width: 0px;
+  border-radius: 5px;
+}
+.nav-item {
+  text-decoration: none;
+  color: #fff;
+}
+.nav-item li {
+  text-align: center;
+}
+.nav-item li:hover {
+  background: #ccae93;
+  border-radius: 5px;
+  transition: 0.5s;
+  color: rgb(255, 255, 255);
+}
+
+/* espaciado carrucel*/
+section {
+  margin: 50px 0 60px;
+}
+
+/* espaciado bienvenida*/
+.Description {
+  margin: 120px 0 100px;
+}
+
+/*Estilo seccion Description*/
+.column h3 {
+  color: #634d3c;
+  font-size: 1.4em;
+  font-weight: 650;
+}
+.column {
+  flex: 1;
+  padding: 10px;
+  text-align: center;
+}
+.column p {
+  padding: 20px;
+}
+
+/* estilos a Estadisticas*/
+.fun-fact {
+  margin-bottom: 50px;
+  padding: 100px;
+  background-color: #ccae93;
+}
+.fun-icon a {
+  border: 1px solid #fff;
+  border-radius: 50%;
+  color: #fff;
+  display: inline-block;
+  font-size: 30px;
+  height: 68px;
+  line-height: 68px;
+  width: 68px;
+}
+.single-fun-fact p {
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+}
+.single-fun-fact h5 {
+  color: #fff;
+  display: inline-block;
+  line-height: 16px;
+  margin-bottom: 0;
+  margin-top: 8px;
+  text-transform: uppercase;
+}
+
+/* Estilos al Footer
+  .footer-top {
+    margin: 30px 0 0;
+    padding-top: 30px;
+    background: #e6dbd3 none repeat scroll 0 0;
+  }
+  .footer-title {
+    font-size: 1.2em;
+    font-weight: 500;
+  }
+  .single-footer ul li a {
+    color: #5e5e5e;
+    text-transform: capitalize;
+    text-decoration: none;
+  }
+  .single-footer.quick-links li:before {
+    background: #5e5e5e none repeat scroll 0 0;
+    content: "";
+    height: 5px;
+    left: 0;
+    position: absolute;
+    top: 4px;
+    width: 5px;
+  }
+  .single-footer.quick-links li {
+    display: block;
+    margin-bottom: 15px;
+    padding-left: 15px;
+    position: relative;
+  }
+  .single-footer ul li .close {
+    color: rgb(187, 0, 0);
+  }
+  
+  .footer-bottom {
+    background: #e1e1e1 none repeat scroll 0 0;
+    padding: 10px;
+  } */
+
+/* Estilos API*/
+.container1 h1 {
+  color: #8b7460;
+  font-size: 1.3em;
+  font-weight: 700;
+}
+.weather-data {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin-top: 20px;
+}
+.weather-data__item {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 1em;
+  margin-bottom: 10px;
+  padding: 10px;
+  background-color: #f2f2f2;
+  border-radius: 5px;
+  box-shadow: 0 3px 6px rgba(0, 0, 0, 0.1);
+}
+.weather-data__icon {
+  margin-right: 10px;
+}
+
+/* Datos del tiempo */
+
+.container1 {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: 50px 0 60px;
+  height: 200px;
+  padding: 20px;
+}
+
+.weather-data {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  grid-gap: 10px;
+  margin-top: 20px;
+}
+
+.weather-data__item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  text-align: center;
+}
+
+.weather-data__icon {
+  width: 50px;
+  height: 50px;
+}
+
+.weather-data__text {
+  margin-top: 10px;
+}
+/* Redicionadores */
+
+#musculos {
+  padding-top: 500px;
+}
+
+#distintas {
+  padding-top: 500px;
+}
+
+#arrugas {
+  padding-top: 500px;
+}
+
+.tratamientos {
+  margin: 90px 0 60px;
+}
+
+/*footer*/
+/*fondo*/
+.site-footer {
+  background-color: #8b7460;
+  padding: 0px 0 0px;
+  font-size: 15px;
+  line-height: 24px;
+  color: #f2f2f2;
+}
+/*color h6*/
+h6 {
+  color: #fff;
+  font-size: 25px !important;
+  padding: 3% 0% !important;
+}
+/*espacio*/
+.espaciorooter {
+  padding: 3% 3% !important ;
+}
+/*espacio*/
+.espaciofooter3 {
+  padding: 3% 3% 3% 5% !important ;
+}
+/*eliminacion de estilos de la lista*/
+.listaopcion {
+  list-style-type: none !important;
+  text-decoration: none !important;
+}
+/*estilo del hr*/
+.hrfooter {
+  background: #fff;
+  margin: 1% 5% !important;
+  height: 1px;
+}
+/*espacio del texto*/
+.espaciocopyright {
+  padding: 1% 5% 4% 5% !important;
+}
+/*espacio*/
+.copyright-tex {
+  padding-top: 2% !important;
+}
+/*estilos de iconos*/
+.socialicons {
+  text-decoration: none !important;
+  list-style-type: none !important;
+}
+/*estilo de items*/
+.listaicon {
+  text-decoration: none;
+  list-style: none;
+  padding-top: 3% !important;
+}
+/*lista items*/
+.itemslista {
+  background: #33353d !important;
+  border-radius: 100% !important;
+  width: 40px;
+  height: 40px;
+  line-height: 40px;
+  margin-left: 6px;
+  margin-right: 0;
+  display: inline-block !important;
+}
+/*efectos hover*/
+.facebook:hover {
+  background: #3b5998 !important;
+  color: #fff;
+}
+.twitter:hover {
+  background: #00aced !important;
+  color: #fff;
+}
+.dribbble:hover {
+  background: #ea4c89 !important;
+  color: #fff;
+}
+.linkedin:hover {
+  background: #007bb6 !important;
+  color: #fff;
+}

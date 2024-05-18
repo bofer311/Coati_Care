@@ -1,0 +1,179 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta
+      name="google-site-verification"
+      content="ceH6CILJvrYh2UvfMN_0YGM6Q7wmeXWSkd419qCuagY"
+    />
+    <meta name="msvalidate.01" content="4668728EF6D19B5A3448D35BA1A4936B" />
+    <title>Formulario</title>
+    <link
+      rel="stylesheet"
+      href="https://maxcdn.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+    />
+    <style>
+      body {
+        background-image: url("/trabajo-integrador-Grupo-3/img/foto_formulario.jpg");
+        background-size: contain;
+        background-repeat: no-repeat;
+        background-position: center;
+      }
+
+      .container {
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        min-height: 100vh;
+      }
+
+      .form-container {
+        background-color: rgba(255, 255, 255, 0.9);
+        padding: 30px;
+        border-radius: 10px;
+        box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+      }
+    </style>
+    <meta name="msvalidate.01" content="4668728EF6D19B5A3448D35BA1A4936B" />
+  </head>
+  <body>
+    <div class="container">
+      <div class="col-lg-6">
+        <div class="form-container">
+          <h2 class="text-center">Solicite su Turno</h2>
+          <form
+            action="https://formsubmit.co/fer.bogado@gmail.com"
+            method="POST"
+          >
+            <div class="form-group">
+              <label for="nombres">Nombres:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="nombres"
+                name="nombres"
+                placeholder="Escribe tu nombre"
+                required
+              />
+            </div>
+            <div class="form-group">
+              <label for="telefono">Teléfono:</label>
+              <input
+                type="text"
+                class="form-control"
+                id="telefono"
+                name="telefono"
+                placeholder="Dejanos tu número"
+                required
+              />
+              <small id="telefonoHelp" class="form-text text-muted"
+                >El número de teléfono debe tener el formato (11)
+                1234-5678.</small
+              >
+            </div>
+            <div class="form-group">
+              <label for="correo">Correo Electrónico:</label>
+              <input
+                type="email"
+                class="form-control"
+                id="correo"
+                name="correo"
+                placeholder="Correo Electrónico"
+                required
+              />
+            </div>
+            <div class="pagina">
+              <div class="titulo">Turno disponible</div>
+              <br />
+              <div class="campo">
+                <div class="label">Día de atención:</div>
+                <br />
+                <select id="diaAtencion" name="dia de Atencion" required>
+                  <option value="Lunes">Lunes</option>
+                  <option value="Jueves">Jueves</option>
+                </select>
+              </div>
+              <br />
+              <div class="campo">
+                <div class="label">Horarios:</div>
+                <br />
+                <select id="horario" name="horario" required>
+                  <option value="16:00">16:00</option>
+                  <option value="16:30">16:30</option>
+                  <option value="17:00">17:00</option>
+                  <option value="17:30">17:30</option>
+                  <option value="18:00">18:00</option>
+                  <option value="18:30">18:30</option>
+                  <option value="19:00">19:00</option>
+                  <option value="19:30">19:30</option></select
+                ><br />
+              </div>
+              <br />
+            </div>
+            <input
+              type="hidden"
+              name="_next"
+              value="https://drairrazabal.com.ar"
+            />
+            <button type="submit" class="btn btn-primary btn-block">
+              Enviar
+            </button>
+          </form>
+        </div>
+      </div>
+    </div>
+    <script>
+      function checkOccupiedTimes() {
+        var occupiedTimes = localStorage.getItem("occupiedTimes");
+        if (occupiedTimes) {
+          occupiedTimes = JSON.parse(occupiedTimes);
+          var options = document.getElementById("horario").options;
+          for (var i = 0; i < options.length; i++) {
+            if (occupiedTimes.includes(options[i].value)) {
+              options[i].disabled = true;
+            }
+          }
+        }
+      }
+
+      function handleFormSubmit(event) {
+        event.preventDefault();
+        var selectedTime = document.getElementById("horario").value;
+        var occupiedTimes = localStorage.getItem("occupiedTimes");
+        if (!occupiedTimes) {
+          occupiedTimes = [];
+        } else {
+          occupiedTimes = JSON.parse(occupiedTimes);
+        }
+        if (occupiedTimes.includes(selectedTime)) {
+          alert(
+            "El horario seleccionado ya está ocupado. Por favor, elija otro horario."
+          );
+          return;
+        }
+        occupiedTimes.push(selectedTime);
+        localStorage.setItem("occupiedTimes", JSON.stringify(occupiedTimes));
+        alert(
+          "Turno reservado para el día " +
+            selectedDay +
+            " a las " +
+            selectedTime
+        );
+        event.target.submit();
+      }
+
+      window.addEventListener("load", checkOccupiedTimes);
+
+      // Validación del número de teléfono
+      var telefonoInput = document.getElementById("telefono");
+      telefonoInput.addEventListener("input", function () {
+        var telefono = telefonoInput.value;
+        telefono = telefono.replace(/\D/g, ""); // Eliminar caracteres que no sean dígitos
+        telefono = telefono.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3"); // Formatear el número de teléfono (ejemplo: (11) 1234-5678)
+        telefonoInput.value = telefono;
+      });
+    </script>
+  </body>
+</html>

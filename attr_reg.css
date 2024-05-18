@@ -1,0 +1,233 @@
+* {
+  margin: 0;
+  padding: 0;
+  outline: none;
+  font-family: serif;
+}
+body {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background-color: rgb(29, 29, 29);
+}
+.btn-cancelar {
+  text-decoration: none;
+  font-size: 1.5em;
+  font-weight: 600;
+  width: 50px;
+  height: 50px;
+  padding: 5px 10px;
+  /*background: #ff0000;*/
+  color: rgb(255, 0, 0);
+  border: 5px solid;
+  border-radius: 10%;
+  position: relative;
+  top: -260px;
+  right: -420px;
+}
+
+.container {
+  width: 350px;
+  background: #ffff;
+  border-radius: 7px;
+  text-align: center;
+  padding: 30px 35px 0 35px;
+}
+
+.container h2 {
+  font-size: 28px;
+  font-weight: 600;
+  margin: 0 0 30px 0;
+}
+
+.container .form-princ {
+  width: 100%;
+  overflow: hidden;
+}
+
+.form-princ form {
+  display: flex;
+  width: 400%;
+}
+
+.form-princ form .pagina {
+  width: 25%;
+  transition: margin-left 0.3s ease-in-out;
+}
+.form-princ form .pagina .titulo {
+  text-align: left;
+  font-size: 20px;
+  font-weight: 500;
+}
+
+.form-princ form .pagina .campo {
+  height: 35px;
+  width: 350px;
+  margin: 40px 0;
+  display: flex;
+  position: relative;
+}
+.form-princ form .pagina .campo .label {
+  position: absolute;
+  top: -30px;
+  font-weight: 500;
+  font-size: 14px;
+  font-style: italic;
+  float: left;
+  text-align: left;
+  width: 100%;
+}
+
+.form-princ form .pagina .campo input {
+  width: 100%;
+  height: 100%;
+  border: 1px solid lightgray;
+  border-radius: 5px;
+  font-size: 16px;
+  padding-left: 15px;
+}
+
+.form-princ form .pagina .campo select {
+  width: 100%;
+  padding-left: 10px;
+  font-size: 16px;
+  font-weight: 500;
+  border-radius: 5px;
+  border: 1px solid lightgray;
+}
+
+.form-princ form .pagina .campo button {
+  width: 100%;
+  height: calc(100% + 5px);
+  margin-top: -20px;
+  border: none;
+  background: #ccae93;
+  border-radius: 7px;
+  color: #ffff;
+  font-size: 18px;
+  font-weight: 500;
+  letter-spacing: 1px;
+  text-transform: uppercase;
+  cursor: pointer;
+  transition: 0.3s;
+}
+
+.form-princ form .pagina .campo button:hover {
+  background: #c2b3a6;
+}
+
+.form-princ form .pagina .btns button {
+  margin-top: -20px !important;
+}
+
+.form-princ form .pagina .btns button.volver {
+  margin-right: 3px;
+  font-size: 17px;
+}
+
+.form-princ form .pagina .btns button.adelante {
+  margin-right: 3px;
+  font-size: 17px;
+}
+
+.container .process-bar {
+  display: flex;
+  margin: 40px 0;
+}
+.container .process-bar .paso {
+  text-align: center;
+  width: 100%;
+  position: relative;
+}
+
+.process-bar .paso p {
+  font-size: 18px;
+  font-weight: 500;
+  color: #666666;
+  margin-bottom: 8px;
+  transition: 0.3s;
+}
+
+.process-bar .paso p.active {
+  color: #ff0000;
+}
+
+.process-bar .paso .num {
+  position: relative;
+  width: 25px;
+  height: 25px;
+  border: 2px solid #666666;
+  border-radius: 50%;
+  display: inline-block;
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  transition: 0.3s;
+}
+.process-bar .paso .num.active {
+  border-color: #ff0000;
+  background: #ff0000;
+}
+
+.process-bar .paso .num span {
+  font-weight: 500;
+  font-size: 17px;
+  line-height: 25px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.process-bar .paso .num.active span {
+  display: none;
+}
+.process-bar .paso .check {
+  display: none;
+  position: absolute;
+  left: 50%;
+  top: 70%;
+  font-size: 15px;
+  transform: translate(-50%, -50%);
+}
+
+.process-bar .paso .check.active {
+  display: block;
+  color: #ffff;
+}
+
+.process-bar .paso .num:before,
+.process-bar .paso .num:after {
+  position: absolute;
+  content: "";
+  width: 44px;
+  height: 3px;
+  bottom: 11px;
+  right: -53px;
+  background: #666666;
+}
+
+.process-bar .paso:last-child .num:before,
+.process-bar .paso:last-child .num:after {
+  display: none;
+}
+
+.process-bar .paso .num.active:after {
+  background: #ff0000;
+  animation: mov_Linea 0.3s linear forwards;
+  transform: scaleX(0);
+  transform-origin: left;
+}
+
+@keyframes mov_Linea {
+  100% {
+    transform: scaleX(1);
+  }
+}
+
+/* mensaje error*/
+.error {
+  color: #ff0000;
+  float: right;
+  text-align: right;
+}

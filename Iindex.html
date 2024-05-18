@@ -1,0 +1,537 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="google-site-verification" content="ceH6CILJvrYh2UvfMN_0YGM6Q7wmeXWSkd419qCuagY" />
+    <title>MSI </title>
+    <link rel="icon" href="img/marca.jpeg">
+    <link rel="stylesheet" href="atributos.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-aFq/bzH65dt+w6FI2ooMVUpc+21e0SRygnTpmBvdBgSdnuTN7QbdgL+OapgHtvPp" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <script src="jspdf.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/signature_pad@4.0.0/dist/signature_pad.umd.min.js"></script>
+    <link rel="stylesheet" href="app.js">
+    <!-- jquery js -->
+    <script src="lib/jquery.js"></script>
+    <!-- Descripcion -->
+    <meta name="description" content="Pagina Web componentes de bootstrap, angular, jquery, react y muchas cosas mas">
+    <!-- Bootstrap enlace css -->
+    <link rel="stylesheet" href="lib/bootstrap/css/bootstrap.css">
+    <!-- iconos -->
+    <link rel="stylesheet" href="resources/iconos/fonts/style.css">
+    <!-- Letras -->
+    <link href="https://fonts.googleapis.com/css?family=Pacifico&display=swap" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/twitter-bootstrap/2.3.2/css/bootstrap-combined.no-icons.min.css" rel="stylesheet">
+    <link href="//netdna.bootstrapcdn.com/font-awesome/3.2.1/css/font-awesome.css" rel="stylesheet">
+    
+<!--Arrancando la pagina-->
+<body>
+  <header>
+    <!-- Menu principal -->
+    <nav class="navbar navbar-expand-lg fixed-top" style="background-color: #ffffff;">
+      <a class="navbar-brand" href="#" style="display: flex; align-items: center;">
+        <img src="IMG/marca.png" alt="logotipo" width="30" height="30" class="d-inline-block align-text-top">
+        <span style="margin-left: 10px;">Dra. Irrazabal</span>
+      </a>
+      
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#navbarOffcanvasLg" aria-controls="navbarOffcanvasLg" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="navbarOffcanvasLg" aria-labelledby="navbarOffcanvasLgLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasDarkNavbarLabel">Dra. Irrazabal</h5>
+          <button type="button" class="btn-close btn-close-white" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav justify-content-end flex-grow-1 pe-3">
+            <li class="nav-item">
+              <a class="nav-link" aria-current="page" href="#">Inicio</a>
+            </li>
+            <li class="nav-item dropdown">
+              <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                Tratamientos
+              </a>
+              <ul class="dropdown-menu">
+                <li><a class="nav-item dropdown" href="#musculos">Toxina Botulínica</a></li>
+                <li><a class="nav-item dropdown" href="#musculos">Hialuronico</a></li>
+                <li><a class="nav-item dropdown" href="#musculos">Lifting sin cirugia</a></li>
+                <li><a class="nav-item dropdown" href="#musculos">PRP</a></li>
+              </ul>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="#profesional">Nosotros</a>
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" id="turno" href="registro.html" target="_blank">Turnos</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+  </header>
+  
+    <!-- Carrucel imagenes -->
+<section>
+      <div id="carouselExampleAutoplaying" class="carousel slide" data-bs-ride="carousel">
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="IMG/IMAGEN-DE-COLOCACION-BOTOX-CON-MARCA-2.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/rostro-femenino-piel.jpg" class="d-block w-100" alt="...">
+          </div>
+          <div class="carousel-item">
+            <img src="img/mujer-cara-inyeccion-botox.jpg" class="d-block w-100" alt="...">
+          </div>-
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Siguiente</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleAutoplaying" data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Anterior</span>
+        </button>
+      </div>
+</section>
+
+<!-- Bienvenida -->
+<div class="welcome-about">
+  <div class="container">
+      <div class="row">
+          <div class="col-lg-6 col-sm-12 col-xs-12">
+              <div class="about-img">
+                  <img src="img/foto SUSANA CON GENTE.jpg" alt="" style="width: 100%; height: auto;">
+              </div>
+          </div>
+          <div class="col-lg-6 col-sm-12 col-xs-12">
+              <div id="about-desc">
+
+                  <h6>Bienvenidos a</h6><a id="profesional"></a>
+                  <h1>BELLEZA INTEGRAL</h1>
+
+                  <p id="Nosotros" style="text-align: justify;">
+                    La Dra. Irrazabal es una profesional de la medicina estética con amplia experiencia en el campo de los tratamientos minimamente invasivos para el cuidado de la piel y la belleza. Su enfoque es brindar soluciones personalizadas a las necesidades de cada paciente, utilizando técnicas innovadoras y tecnologías de vanguardia para obtener resultados óptimos. La Dra. Irrazabal es reconocida por su dedicación y compromiso en el cuidado de sus pacientes, y su pasión por mantenerse actualizada en los últimos avances de la medicina estética. Con su enfoque centrado en el paciente y su experiencia en el campo, la Dra. Irrazabal es una excelente opción para aquellos que buscan mejorar su apariencia y su autoestima.
+                </p>
+                
+                <div style="text-align: center;">
+                    <img src="/img/mascarilla.jpg" alt="Descripción de la imagen" style="width: 246px; height: auto;">
+                </div>
+                
+                  
+              </div>
+          </div>
+      </div>
+  </div>
+</div>
+
+<!-- Tratamientos -->
+<div class="tratamientos">
+  <div class="container">
+    <div class="row">
+      <div class="column">
+        <h3>Toxina Botulínica</h3>
+        <p id ="": style="text-align: justify ; padding-left: 30px;"><br><br>Las inyecciones de Toxina Botulínica bloquean determinadas señales químicas de los nervios, principalmente las señales que hacen que los músculos se contraigan. El uso más frecuente de estas inyecciones es relajar temporariamente los <a id="musculos">músculos</a> faciales que causan arrugas en la frente y alrededor de los ojos.</p>
+      </div>
+      <div class="column">
+        <h3>Acido hialurónico</h3>
+        <p id ="": style="text-align: justify;"><br><br>El ácido hialurónico es uno de los tratamientos no invasivos más solicitados y su demanda con fines estéticos se ha incrementado considerablemente en los últimos diez años. <a id="ultimos"></a> En medicina estética, el ácido hialurónico se utiliza como sustancia de relleno para las arrugas de la cara y también para aumentar el volúmen de ciertas zonas de la cara o del cuerpo.Así también como para estimular la formación de nuevo colágeno mejorando la calidad de la piel</p>
+      </div>
+      <div class="column">
+        <h3>Lifting sin cirugia-DERMORAY</h3>
+        <p id ="PRP": style="text-align: justify ;padding-right: 30px;">Con el paso del tiempo es inevitable que la piel se arrugue y pierda su elasticidad pero con #DermoRay podés brindarle a tus pacientes la posibilidad de revertir el envejecimiento.Beneficios que brinda un tratamiento con nuestro equipo.Remueve arrugas profundas superficiales,verrugas y lesiones de pigmentación.Corrección de cicatrices.Puede ser aplicado en zonas del cuerpo y el rostro</p>
+      </div>
+      <div class="column">
+        <h3>Plasma Rico en Plaquetas</h3>
+        <p id ="PRP": style="text-align: justify ;padding-right: 30px;"><br><br>El Plasma Rico en Plaquetas permite mejorar la calidad, grosor, elasticidad y firmeza de la piel, que queda más luminosa, menos flácida y más lisa. Por eso es la mejor opción para tratar las <a id="arrugas">arrugas</a>. No solo rejuvenece sino que además retrasa el proceso de envejecimiento.</p>
+    </div>
+    <div class="card-group">
+      <div class="card">
+       <img src="/trabajo-integrador-Grupo-3/img/4 plasma.jpeg" class="card-img-top" alt="Plasma Rico en Plaquetas">
+       <div class="card-body">
+         <h5 class="card-title">Plasma Rico en Plaquetas</h5>
+         <p class="card-text">El Plasma Rico en Plaquetas permite mejorar la calidad, grosor, elasticidad y firmeza de la piel, que queda más luminosa, menos flácida y más lisa. Por eso es la mejor opción para tratar las <a id="arrugas">arrugas</a>. No solo rejuvenece sino que además retrasa el proceso de envejecimiento.</p>
+         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+       </div>
+      </div>
+      <div class="card">
+       <img src="/trabajo-integrador-Grupo-3/img/mujer-cara-inyeccion-botox.jpg" class="card-img-top" alt="Acido Hialuronico">
+       <div class="card-body">
+         <h5 class="card-title">Acido Hialuronico</h5>
+         <p class="card-text">El ácido hialurónico es uno de los tratamientos no invasivos más solicitados y su demanda con fines estéticos se ha incrementado considerablemente en los últimos diez años. <a id="ultimos"></a> En medicina estética, el ácido hialurónico se utiliza como sustancia de relleno para las arrugas de la cara y también para aumentar el volúmen de ciertas zonas de la cara o del cuerpo.Así también como para estimular la formación de nuevo colágeno mejorando la calidad de la piel</p>
+         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+       </div>
+      </div>
+      <div class="card">
+       <img src="/trabajo-integrador-Grupo-3/img/rostro-femenino-piel.jpg" class="card-img-top" alt="Toxina Botulínica">
+       <div class="card-body">
+         <h5 class="card-title">Toxina Botulínica</h5>
+         <p class="card-text">Las inyecciones de Toxina Botulínica bloquean determinadas señales químicas de los nervios, principalmente las señales que hacen que los músculos se contraigan. El uso más frecuente de estas inyecciones es relajar temporariamente los <a id="musculos">músculos</a> faciales que causan arrugas en la frente y alrededor de los ojos.</p>
+         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+      </div>
+      <div class="card">
+       <img src="/trabajo-integrador-Grupo-3/img/Acido Hialuronico.jpg" class="card-img-top" alt="">
+       <div class="card-body">
+         <h5 class="card-title">Lifting sin cirugia-DERMORAY</h5>
+         <p class="card-text">Con el paso del tiempo es inevitable que la piel se arrugue y pierda su elasticidad pero con #DermoRay podés brindarle a tus pacientes la posibilidad de revertir el envejecimiento.Beneficios que brinda un tratamiento con nuestro equipo.Remueve arrugas profundas superficiales,verrugas y lesiones de pigmentación.Corrección de cicatrices.Puede ser aplicado en zonas del cuerpo y el rostro</p>
+         <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+       </div>
+      </div>
+    </div>
+   </div>
+</div>
+
+<br>
+<br>
+
+<!-- Estadisticas -->
+<div class="fun-fact text-center ptb-100">
+  <div class="container">
+    <div class="row" style="display: flex; justify-content: space-around;">
+      <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="single-fun-fact">
+          <div class="fun-icon">
+            <a href="#"><img src="Fonts/cup.svg" width="30" height="30"></a>
+          </div>
+          <p class="counter">13</p>
+          <h5>Premios</h5>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="single-fun-fact">
+          <div class="fun-icon">
+            <a href="#"><img src="Fonts/usuario.svg" width="30" height="30"></a>
+          </div>
+          <p class="counter">1586</p>
+          <h5>Clientes</h5>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="single-fun-fact">
+          <div class="fun-icon">
+            <a href="#"><img src="Fonts/farmacia.svg" width="45" height="45"></a>
+          </div>
+          <p class="counter">896</p>
+          <h5>Tratamientos</h5>
+        </div>
+      </div>
+      <div class="col-lg-3 col-md-3 col-xs-12">
+        <div class="single-fun-fact">
+          <div class="fun-icon">
+            <a href="#"><i class="fa fa-pagelines" aria-hidden="true"></i></a>
+          </div>
+          <p class="counter">300</p>
+          <h5>Entrenamiento</h5>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<br>
+<!-- Datos del Tiempo -->
+<div class="container1">
+  <h1>DATOS DEL TIEMPO</h1>
+  <div class="weather-data">
+    <div class="weather-data__item">
+      <img class="weather-data__icon" src="/img/nubes.jpg" width="200px" alt="">
+      <span class="weather-data__text location"></span>
+    </div>
+    <div class="weather-data__item">
+      <img class="weather-data__icon" src="/img/termometro.jpg" width="200px" alt="">
+      <span class="weather-data__text temperature"></span>
+    </div>
+    <div class="weather-data__item">
+      <img class="weather-data__icon" src="/img/humedad.png" width="200px"alt="">
+      <span class="weather-data__text humidity"></span>
+    </div>
+    <div class="weather-data__item">
+      <img class="weather-data__icon" src="/img/viento.jpg" width="200px" alt="">
+      <span class="weather-data__text wind"></span>
+    </div>
+  </div>
+</div>
+
+<!-- Nosotros
+<div class="container" id="nosotros">
+  <div style="display:flex; flex-wrap:wrap;">
+   <div class="card">
+      <img src="IMG/FCB_1.jpg" alt="Imagen de perfil">
+      <h2>Fernando Bogado</h2>
+      <p>Administration</p>
+      <p>Posadas - Misiones</p>
+      <p><i class="fa-solid fa-at fa-bounce fa-lg" style="color: #542ab7;"></i></p>
+      <a class="fa-brands fa-whatsapp fa-bounce fa-lg" style="color: #37e407;"></a></p>
+    </div>
+    <div class="card">
+      <img src="img/Angel.jpg" alt="Imagen de perfil">
+      <h2>Angel Sagredo</h2>
+      <p>Administration</p>
+      <p>Santa Fe - Santa Fe</p>
+      <p><i class="fa-solid fa-at fa-bounce fa-lg" style="color: #542ab7;"></i></p>
+      <a class="fa-brands fa-whatsapp fa-bounce fa-lg" style="color: #37e407;"></a></p>
+    </div>
+    <div class="card">
+      <img src="/img/Mariana_Fernandez.jpg" alt="Imagen de perfil">
+      <h2>Mariana Fernandez</h2>
+      <p>Camarera</p>
+      <p>Hurlingham - Bs As</p>
+      <p><i class="fa-solid fa-at fa-bounce fa-lg" style="color: #542ab7;"></i></p>
+      <a class="fa-brands fa-whatsapp fa-bounce fa-lg" style="color: #37e407;"></a></p>
+    </div>
+    <div class="card">
+      <img src="/img/Rene_Quinteros.jpg" alt="Imagen de perfil">
+      <h2>Rene Quinteros</h2>
+      <p>Estilista</p>
+      <p>Tigre - BsAs</p>
+      <p><i class="fa-solid fa-at fa-bounce fa-lg" style="color: #542ab7;"></i></p>
+      <a class="fa-brands fa-whatsapp fa-bounce fa-lg" style="color: #37e407;"></a></p>
+    </div>
+    <div class="card">
+      <img src="/img/Gabriel_.jpg" alt="Imagen de perfil">
+      <h2>Gabriel Ayala</h2>
+      <p>Cargo o profesión</p>
+      <p><i class="fa-solid fa-at fa-bounce fa-lg" style="color: #542ab7;"></i></p>
+      <a class="fa-brands fa-whatsapp fa-bounce fa-lg" style="color: #37e407;"></a></p>
+    </div>
+  </div>
+</div> -->
+
+<!-- Cuadro de mensajes -->
+<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="exampleModalLabel">Nuevo Mensaje</h1>
+        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+      </div>
+      <div class="modal-body">
+        <form id="form">
+          <div class="mb-3">
+            <label for="recipient-name" class="col-form-label">Nombre:</label>
+            <input type="text" class="form-control" id="recipient-name" name="name">
+          </div>
+          <div class="mb-3">
+            <label for="message-text" class="col-form-label">Mensaje:</label>
+            <textarea class="form-control" id="message-text" name="message"></textarea>
+          </div>
+        </form>
+      </div>
+      <div class="modal-footer">
+        <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Cerrar</button>
+        <button type="button" class="btn btn-primary" onclick="submitForm()">Enviar mensaje</button>
+      </div>
+    </div>
+  </div>
+</div>
+
+<!-- footer -->
+<div class="container-fluid site-footer">
+  <div class="row">
+      <div class="col-md-6 espaciorooter col-sm-12">
+          <h6>About</h6>
+          <p class="text-justify ">Dra Susana Irrazabal </i> 
+              "Belleza integral destaca el enfoque integral de la belleza, abarcando tratamientos faciales, corporales y de bienestar emocional. Sugiere que la belleza va más allá de la apariencia física y se centra en el equilibrio general.</p>
+      </div>
+      <div class="col-md-3 espaciofooter3 col-sm-6">
+          <h6>Categories</h6>
+          <ul>
+              <li class="listaopcion">
+                  Botox
+              </li>
+              <li class="listaopcion">
+                  Hialuronico
+              </li>
+              <li class="listaopcion">
+                  Lifting sin cirugia
+              </li>
+              <li class="listaopcion">
+                  Plasma rico en Plaquetas
+              </li>
+          </ul>
+      </div>
+      <div class="col-md-3 espaciofooter3 col-sm-6">
+          <h6>Quick Links</h6>
+          <ul>
+              <li class="listaopcion">
+                  About Us
+              </li>
+              <li class="listaopcion">
+                  Contact Us
+              </li>
+              <li class="listaopcion">
+                  Contribute
+              </li>
+              <li class="listaopcion">
+                  Privacy Policy
+              </li>
+              <li class="listaopcion">
+                  Sitemap
+              </li>
+          </ul>
+      </div>
+  </div>
+  <div class="row">
+      <div class="col-md-12">
+          <hr class="hrfooter" />
+      </div>
+  </div>
+  <div class="row espaciocopyright">
+      <div class="col-md-8 col-sm-6 col-12 copyright-tex">
+          <p class="textp">Copyright &copy; 2023 All Rights Reserved by 
+              <a href="#" style="color:#3421df;">Coati Care</a>.
+          </p>
+      </div>
+
+      <div class="col-md-4 col-sm-6 col-12 text-right">
+
+        <ul class="listaicon">
+          <li class="itemslista text-center facebook">
+              <a href="https://www.instagram.com/dra.Irrazabal" target="_blank">
+                  <i class="icon-instagram"></i>
+              </a>
+          </li>
+          <li class="itemslista text-center linkedin">
+            <a href="https://api.whatsapp.com/send?phone=543764666751" target="_blank">
+              <i class="fa-brands fa-whatsapp" style="color: #2ad327;"></i>
+              </a>
+          </li>
+          <li class="itemslista text-center linkedin">
+            <a href="https://www.facebook.com/susanairrazabal76?mibextid=ZbWKwL" target="_blank">
+              <i class="icon-facebook"></i></a>
+          </li>
+      </ul>
+
+      </div>
+  </div>
+</div>
+
+
+
+
+
+
+
+
+
+
+<!-- Scripts librerias de js -->
+<!-- Angular js -->
+<script src="lib/angular.js"></script>
+<!-- cdn de bootstrap js -->
+<script src="lib/bootstrap/js/bootstrap.js"></script>
+<!-- script de la pagina js principal -->
+<script src="js/script.js"></script>  
+
+
+
+
+
+<!-- Footer
+<footer>
+  <div class="footer">
+    <div class="footer-top ptb-100">
+        <div class="container">
+            <div class="row">
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                    <div class="single-footer contact">
+                        <div class="footer-title">
+                            <p>Contactanos</p>
+                        </div>
+                        <div class="contact-action mb-15">
+                            <span><i class="zmdi zmdi-pin"></i></span>
+                            <p>House No 08, Road No 08,<br>Palermo, Buenos Aires, Argentina</p>
+                        </div>
+                        <div class="contact-action mb-15">
+                            <span><i class="zmdi zmdi-email"></i></span>
+                            <p>info@example.com<br>Administracion@example.com</p>
+                        </div>
+                        <div class="contact-action">
+                            <span>
+                                <i class="zmdi zmdi-phone"></i>
+                            </span>
+                            <p>+054 011 678 102<br>+054 011 678 102</p>
+                        </div>
+                    </div>
+                </div>
+                <div class="col-lg-2 col-md-6 col-xs-12">
+                    <div class="single-footer quick-links">
+                       <div class="footer-title">
+                            <p>Accesos</p>
+                        </div>
+                        <ul>
+                            <li><a href="#">Inicio</a></li>
+                            <li><a href="#">Tratamientos</a></li>
+                            <li><a href="#">Nosotros</a></li>
+                            <li><a href="#">Contacto</a></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-4 col-md-6 col-xs-12">
+                    <div class="single-footer open-hours">
+                        <div class="footer-title">
+                            <p>Horarios</p>
+                        </div>
+                        <p>Lorem ipsum dolor sit amet, consectetueiusmodm dost  adipisicing elit, sed do eiusmod is tempincididuntm ut 
+lorem ipsome do or sit amt  labore et dolor </p>
+                        <ul>
+                            <li>Lunes - Viernes <span>8:00 a 17:00</span></li>
+                            <li>Sabados <span>8:00 a 12:00</span></li>
+                            <li>Domingo <span class="close">Cerrado</span></li>
+                        </ul>
+                    </div>
+                </div>
+                <div class="col-lg-3 col-md-6 col-xs-12">
+                  <div class="single-footer widget">
+                      <div class="footer-title text-center d-flex flex-column justify-content-center" style="height: 200px; min-height: 200px;">
+                          <h3 style="margin-top: 10px;">Gracias por todo UTN</h3>
+                          <i class="fa fa-smile fa-lg" style="color: #eb0d3d; margin-top: 10px;"></i>
+                      </div>                                   
+                  </div>
+              </div>
+            </div>
+        </div>
+    </div>
+    <div class="footer-bottom text-center">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-12 col-sm-12 col-xs-12">
+                    <div class="copyright">
+                        <p>Todos los derechos reservados - Copyright© 2023.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+</footer> -->
+
+<!-- API Tiempo -->
+<script>
+  const apiKey = "25905abc18b684d2c27165712cc6eb44";
+  const apiUrl = "https://api.openweathermap.org/data/2.5/weather?q=Posadas,AR&units=metric&appid=" + apiKey;
+
+  fetch(apiUrl)
+    .then(response => response.json())
+    .then(data => {
+      document.querySelector(".location").textContent = `${data.name}, ${data.sys.country}`;
+      document.querySelector(".temperature").textContent = `Temperatura: ${data.main.temp}°C`;
+      document.querySelector(".humidity").textContent = `Humedad: ${data.main.humidity}%`;
+      document.querySelector(".wind").textContent = `Viento: ${data.wind.speed} m/s`;
+    })
+    .catch(error => {
+      console.log("Error al obtener el clima actual.", error);
+    });
+</script>
+
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha2/dist/js/bootstrap.bundle.min.js" integrity="sha384-qKXV1j0HvMUeCBQ+QVp7JcfGl760yU08IQ+GpUo5hlbpg51QRiuqHAJz8+BrxE/N" crossorigin="anonymous"></script>
+<script src="/jquery-3.6.4.min.js"></script>
+<script src="https://kit.fontawesome.com/36ca07dc36.js" crossorigin="anonymous"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.3.1/jspdf.umd.min.js"></script>
+
+</body>
+</html>
+
+</body>
