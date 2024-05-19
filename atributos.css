@@ -327,3 +327,61 @@ h6 {
 .card-title:hover {
   color: rgb(193, 65, 153); /* Color de texto cuando se pasa el mouse */
 }
+
+
+.seccion-estadistica {
+  margin: 0px 0px 50px 0px;
+  padding: 100px;
+  background: #ccae93;
+  height: 350px;
+  display: flex;
+  justify-content: center;  
+}
+
+.contenedor-estadistica {
+  width: 80%;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.estadistica{
+  text-align: center;
+}
+
+.estadistica p{
+  color: #fff;
+  font-size: 25px;
+  font-weight: bold;
+  margin: 15px;
+}
+
+.estadistica h5{
+  color: #fff;
+  text-transform: uppercase;
+}
+
+.seccion-tiempo {
+  width: 80%;
+}
+.datos-tiempo{
+  width: 80%;
+}
+
+.elemtos-tiempo {
+  background: #8b7460;
+  color: #fff;
+}
+
+
+@media only screen and (max-width:768px) {
+  .seccion-estadistica {
+    height: 750px; 
+    padding: 60px
+  }
+
+  .contenedor-estadistica{
+    flex-direction: column;
+  }
+}
