@@ -16,7 +16,7 @@
     />
     <style>
       body {
-        background-image: url("/trabajo-integrador-Grupo-3/img/foto_formulario.jpg");
+        background-image: url("img/logo consultorio.jpg");
         background-size: contain;
         background-repeat: no-repeat;
         background-position: center;
@@ -44,9 +44,10 @@
         <div class="form-container">
           <h2 class="text-center">Solicite su Turno</h2>
           <form
-            action="https://formsubmit.co/fer.bogado@gmail.com"
+            action="https://formsubmit.co/b28abdadd42962f18dee1879da8c790b"
             method="POST"
           >
+            >
             <div class="form-group">
               <label for="nombres">Nombres:</label>
               <input
@@ -90,10 +91,26 @@
               <div class="campo">
                 <div class="label">Día de atención:</div>
                 <br />
-                <select id="diaAtencion" name="dia de Atencion" required>
-                  <option value="Lunes">Lunes</option>
-                  <option value="Jueves">Jueves</option>
-                </select>
+                <div>
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="diaAtencion"
+                      name="diaAtencion"
+                      value="Lunes"
+                    />
+                    Lunes
+                  </label>
+                  <label>
+                    <input
+                      type="checkbox"
+                      class="diaAtencion"
+                      name="diaAtencion"
+                      value="Jueves"
+                    />
+                    Jueves
+                  </label>
+                </div>
               </div>
               <br />
               <div class="campo">
@@ -112,11 +129,7 @@
               </div>
               <br />
             </div>
-            <input
-              type="hidden"
-              name="_next"
-              value="https://drairrazabal.com.ar"
-            />
+            <input type="hidden" name="_next" value="index.html" />
             <button type="submit" class="btn btn-primary btn-block">
               Enviar
             </button>
@@ -137,7 +150,17 @@
           }
         }
       }
-
+      document.querySelectorAll(".diaAtencion").forEach(function (input) {
+        input.addEventListener("click", function () {
+          document
+            .querySelectorAll(".diaAtencion")
+            .forEach(function (otherInput) {
+              if (otherInput !== input) {
+                otherInput.checked = false;
+              }
+            });
+        });
+      });
       function handleFormSubmit(event) {
         event.preventDefault();
         var selectedTime = document.getElementById("horario").value;

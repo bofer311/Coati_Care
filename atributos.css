@@ -100,45 +100,6 @@ section {
   text-transform: uppercase;
 }
 
-/* Estilos al Footer
-  .footer-top {
-    margin: 30px 0 0;
-    padding-top: 30px;
-    background: #e6dbd3 none repeat scroll 0 0;
-  }
-  .footer-title {
-    font-size: 1.2em;
-    font-weight: 500;
-  }
-  .single-footer ul li a {
-    color: #5e5e5e;
-    text-transform: capitalize;
-    text-decoration: none;
-  }
-  .single-footer.quick-links li:before {
-    background: #5e5e5e none repeat scroll 0 0;
-    content: "";
-    height: 5px;
-    left: 0;
-    position: absolute;
-    top: 4px;
-    width: 5px;
-  }
-  .single-footer.quick-links li {
-    display: block;
-    margin-bottom: 15px;
-    padding-left: 15px;
-    position: relative;
-  }
-  .single-footer ul li .close {
-    color: rgb(187, 0, 0);
-  }
-  
-  .footer-bottom {
-    background: #e1e1e1 none repeat scroll 0 0;
-    padding: 10px;
-  } */
-
 /* Estilos API*/
 .container1 h1 {
   color: #8b7460;
@@ -309,18 +270,15 @@ h6 {
   transition: background-color 0.3s, transform 0.3s, border 0.3s;
 }
 
-/* Efecto de resaltado al pasar el mouse */
-.parrafo:hover {
-  background-color: #e0cadf; /* Gris suave */
-  border: 2px solid #dcbdcd; /* Borde gris */
-  transform: scale(1.05);
-  z-index: 1;
-  position: relative;
+/* Efecto de resaltado al pasar el mouse sobre la tarjeta */
+
+.card {
+  border: 7px solid gold; /* Cambia el color del borde a dorado*/
+  transition: transform 0.3s;
 }
 
-/* Estilos para los títulos de las tarjetas */
-.card-title {
-  transition: color 0.3s; /* Transición suave del color */
+.card:hover {
+  transform: scale(1.05);
 }
 
 /* Cambio de color al pasar el mouse sobre el título */
@@ -328,14 +286,13 @@ h6 {
   color: rgb(193, 65, 153); /* Color de texto cuando se pasa el mouse */
 }
 
-
 .seccion-estadistica {
   margin: 0px 0px 50px 0px;
   padding: 100px;
   background: #ccae93;
   height: 350px;
   display: flex;
-  justify-content: center;  
+  justify-content: center;
 }
 
 .contenedor-estadistica {
@@ -346,18 +303,18 @@ h6 {
   justify-content: space-between;
 }
 
-.estadistica{
+.estadistica {
   text-align: center;
 }
 
-.estadistica p{
+.estadistica p {
   color: #fff;
   font-size: 25px;
   font-weight: bold;
   margin: 15px;
 }
 
-.estadistica h5{
+.estadistica h5 {
   color: #fff;
   text-transform: uppercase;
 }
@@ -365,7 +322,7 @@ h6 {
 .seccion-tiempo {
   width: 80%;
 }
-.datos-tiempo{
+.datos-tiempo {
   width: 80%;
 }
 
@@ -374,14 +331,13 @@ h6 {
   color: #fff;
 }
 
-
-@media only screen and (max-width:768px) {
+@media only screen and (max-width: 768px) {
   .seccion-estadistica {
-    height: 750px; 
-    padding: 60px
+    height: 750px;
+    padding: 60px;
   }
 
-  .contenedor-estadistica{
+  .contenedor-estadistica {
     flex-direction: column;
   }
 }
