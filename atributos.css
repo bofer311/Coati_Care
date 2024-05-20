@@ -331,13 +331,32 @@ h6 {
   color: #fff;
 }
 
-@media only screen and (max-width: 768px) {
+@media only screen and (max-width: 767px) {
   .seccion-estadistica {
-    height: 750px;
-    padding: 60px;
+    height: 750px; 
+    padding: 60px
   }
 
   .contenedor-estadistica {
     flex-direction: column;
   }
 }
+
+@media only screen and (min-width:768px) {
+  .seccion-estadistica {
+    height: 500px; 
+  }
+
+  .contenedor-estadistica{
+    flex-direction: column;
+  }
+}
+
+@media only screen and (min-width:980px) {
+  .seccion-estadistica {
+    padding: 100px;
+    height: 350px;
+  }
+
+}
+
