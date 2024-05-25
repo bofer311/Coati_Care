@@ -144,11 +144,11 @@ section {
 .weather-data {
   display: grid;
   grid-template-columns: repeat(4, 1fr);
-  grid-gap: 10px;
+  grid-gap: 40px;
   margin-top: 20px;
 }
 
-.weather-data__item {
+.weather-data__item elemtos-tiempo {
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -162,7 +162,7 @@ section {
 }
 
 .weather-data__text {
-  margin-top: 10px;
+  margin-top: center;
 }
 /* Redicionadores */
 
@@ -333,8 +333,8 @@ h6 {
 
 @media only screen and (max-width: 767px) {
   .seccion-estadistica {
-    height: 750px; 
-    padding: 60px
+    height: 750px;
+    padding: 60px;
   }
 
   .contenedor-estadistica {
@@ -342,21 +342,19 @@ h6 {
   }
 }
 
-@media only screen and (min-width:768px) {
+@media only screen and (min-width: 768px) {
   .seccion-estadistica {
-    height: 500px; 
+    height: 500px;
   }
 
-  .contenedor-estadistica{
+  .contenedor-estadistica {
     flex-direction: column;
   }
 }
 
-@media only screen and (min-width:980px) {
+@media only screen and (min-width: 980px) {
   .seccion-estadistica {
     padding: 100px;
     height: 350px;
   }
-
 }
-
