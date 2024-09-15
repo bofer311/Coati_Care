@@ -11,6 +11,7 @@ app.use(cors());
 // Middleware para analizar el cuerpo de las solicitudes (body-parser)
 app.use(bodyParser.json());
 
+// Conectar a MongoDB
 mongoose
   .connect(process.env.MONGO_URI, {
     useNewUrlParser: true,
@@ -39,6 +40,16 @@ app.post("/api/turnos", async (req, res) => {
     res.status(201).send("Turno registrado con éxito");
   } catch (error) {
     res.status(400).send("Error registrando el turno");
+  }
+});
+
+// Ruta para obtener los turnos ocupados
+app.get("/api/turnos", async (req, res) => {
+  try {
+    const turnos = await Turno.find();
+    res.status(200).json(turnos);
+  } catch (error) {
+    res.status(500).send("Error al obtener los turnos");
   }
 });
 

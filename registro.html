@@ -130,6 +130,52 @@
       </div>
     </div>
     <script>
+      async function fetchOcupados() {
+        try {
+          const response = await fetch("http://localhost:5000/api/turnos");
+          const turnos = await response.json();
+
+          const lunesOcupados = new Set();
+          const juevesOcupados = new Set();
+
+          turnos.forEach((turno) => {
+            if (turno.dia === "Lunes") {
+              lunesOcupados.add(turno.hora);
+            } else if (turno.dia === "Jueves") {
+              juevesOcupados.add(turno.hora);
+            }
+          });
+
+          return { lunesOcupados, juevesOcupados };
+        } catch (error) {
+          console.error("Error fetching ocupados:", error);
+          return { lunesOcupados: new Set(), juevesOcupados: new Set() };
+        }
+      }
+
+      function updateHorarioOptions() {
+        fetchOcupados().then(({ lunesOcupados, juevesOcupados }) => {
+          const selectedDia = document.querySelector(
+            'input[name="diaAtencion"]:checked'
+          )?.value;
+          const horarioSelect = document.getElementById("horario");
+          const options = horarioSelect.options;
+
+          for (let i = 0; i < options.length; i++) {
+            const option = options[i];
+            const hora = option.value;
+
+            if (selectedDia === "Lunes" && lunesOcupados.has(hora)) {
+              option.disabled = true;
+            } else if (selectedDia === "Jueves" && juevesOcupados.has(hora)) {
+              option.disabled = true;
+            } else {
+              option.disabled = false;
+            }
+          }
+        });
+      }
+
       document
         .getElementById("turnoForm")
         .addEventListener("submit", async function (event) {
@@ -162,7 +208,7 @@
 
             if (response.ok) {
               alert("Turno registrado exitosamente");
-              window.location.href = "https://drairrazabal.com.ar"; //Se redirige nuevamente a la pagina principal
+              window.location.href = "index.html";
             } else {
               alert("Error al registrar el turno");
             }
@@ -171,6 +217,15 @@
             alert("Error al registrar el turno");
           }
         });
+
+      document
+        .querySelectorAll('input[name="diaAtencion"]')
+        .forEach((input) => {
+          input.addEventListener("change", updateHorarioOptions);
+        });
+
+      // Inicializar las opciones del horario
+      updateHorarioOptions();
 
       // Validación del número de teléfono
       var telefonoInput = document.getElementById("telefono");
