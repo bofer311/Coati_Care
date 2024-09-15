@@ -4,8 +4,6 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
- 
-    <meta name="msvalidate.01" content="4668728EF6D19B5A3448D35BA1A4936B" />
     <title>Formulario</title>
     <link
       rel="stylesheet"
@@ -33,17 +31,13 @@
         box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
       }
     </style>
-    <meta name="msvalidate.01" content="4668728EF6D19B5A3448D35BA1A4936B" />
   </head>
   <body>
     <div class="container">
       <div class="col-lg-6">
         <div class="form-container">
           <h2 class="text-center">Solicite su Turno</h2>
-          <form
-            action="https://formsubmit.co/b28abdadd42962f18dee1879da8c790b"
-            method="POST"
-          >
+          <form id="turnoForm">
             <div class="form-group">
               <label for="nombres">Nombres:</label>
               <input
@@ -90,19 +84,21 @@
                 <div>
                   <label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       class="diaAtencion"
                       name="diaAtencion"
                       value="Lunes"
+                      required
                     />
                     Lunes
                   </label>
                   <label>
                     <input
-                      type="checkbox"
+                      type="radio"
                       class="diaAtencion"
                       name="diaAtencion"
                       value="Jueves"
+                      required
                     />
                     Jueves
                   </label>
@@ -120,21 +116,12 @@
                   <option value="18:00">18:00</option>
                   <option value="18:30">18:30</option>
                   <option value="19:00">19:00</option>
-                  <option value="19:30">19:30</option></select
-                ><br />
+                  <option value="19:30">19:30</option>
+                </select>
+                <br />
               </div>
               <br />
-              <div class="campo">
-                <div class="label">Comprobante para turno:</div>
-                <input type="file" id="comprobante" name="comprobante" required>
-              </div>
-              <br>
             </div>
-            <input
-              type="hidden"
-              name="_next"
-              value="https://bofer311.github.io/CAC_PCB/"
-            />
             <button type="submit" class="btn btn-primary btn-block">
               Enviar
             </button>
@@ -143,63 +130,54 @@
       </div>
     </div>
     <script>
-      function checkOccupiedTimes() {
-        var occupiedTimes = localStorage.getItem("occupiedTimes");
-        if (occupiedTimes) {
-          occupiedTimes = JSON.parse(occupiedTimes);
-          var options = document.getElementById("horario").options;
-          for (var i = 0; i < options.length; i++) {
-            if (occupiedTimes.includes(options[i].value)) {
-              options[i].disabled = true;
-            }
-          }
-        }
-      }
-      document.querySelectorAll(".diaAtencion").forEach(function (input) {
-        input.addEventListener("click", function () {
-          document
-            .querySelectorAll(".diaAtencion")
-            .forEach(function (otherInput) {
-              if (otherInput !== input) {
-                otherInput.checked = false;
-              }
-            });
-        });
-      });
-      function handleFormSubmit(event) {
-        event.preventDefault();
-        var selectedTime = document.getElementById("horario").value;
-        var occupiedTimes = localStorage.getItem("occupiedTimes");
-        if (!occupiedTimes) {
-          occupiedTimes = [];
-        } else {
-          occupiedTimes = JSON.parse(occupiedTimes);
-        }
-        if (occupiedTimes.includes(selectedTime)) {
-          alert(
-            "El horario seleccionado ya está ocupado. Por favor, elija otro horario."
-          );
-          return;
-        }
-        occupiedTimes.push(selectedTime);
-        localStorage.setItem("occupiedTimes", JSON.stringify(occupiedTimes));
-        alert(
-          "Turno reservado para el día " +
-            selectedDay +
-            " a las " +
-            selectedTime
-        );
-        event.target.submit();
-      }
+      document
+        .getElementById("turnoForm")
+        .addEventListener("submit", async function (event) {
+          event.preventDefault();
 
-      window.addEventListener("load", checkOccupiedTimes);
+          const nombres = document.getElementById("nombres").value;
+          const telefono = document.getElementById("telefono").value;
+          const email = document.getElementById("correo").value;
+          const diaAtencion = document.querySelector(
+            'input[name="diaAtencion"]:checked'
+          ).value;
+          const horario = document.getElementById("horario").value;
+
+          const turno = {
+            nombre: nombres,
+            telefono: telefono,
+            email: email,
+            dia: diaAtencion,
+            hora: horario,
+          };
+
+          try {
+            const response = await fetch("http://localhost:5000/api/turnos", {
+              method: "POST",
+              headers: {
+                "Content-Type": "application/json",
+              },
+              body: JSON.stringify(turno),
+            });
+
+            if (response.ok) {
+              alert("Turno registrado exitosamente");
+              window.location.href = "https://drairrazabal.com.ar"; //Se redirige nuevamente a la pagina principal
+            } else {
+              alert("Error al registrar el turno");
+            }
+          } catch (error) {
+            console.error("Error:", error);
+            alert("Error al registrar el turno");
+          }
+        });
 
       // Validación del número de teléfono
       var telefonoInput = document.getElementById("telefono");
       telefonoInput.addEventListener("input", function () {
         var telefono = telefonoInput.value;
         telefono = telefono.replace(/\D/g, ""); // Eliminar caracteres que no sean dígitos
-        telefono = telefono.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3"); // Formatear el número de teléfono (ejemplo: (11) 1234-5678)
+        telefono = telefono.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3"); // Formatear el número de teléfono
         telefonoInput.value = telefono;
       });
     </script>
