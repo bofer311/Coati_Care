@@ -130,52 +130,6 @@
       </div>
     </div>
     <script>
-      async function fetchOcupados() {
-        try {
-          const response = await fetch("http://localhost:5000/api/turnos");
-          const turnos = await response.json();
-
-          const lunesOcupados = new Set();
-          const juevesOcupados = new Set();
-
-          turnos.forEach((turno) => {
-            if (turno.dia === "Lunes") {
-              lunesOcupados.add(turno.hora);
-            } else if (turno.dia === "Jueves") {
-              juevesOcupados.add(turno.hora);
-            }
-          });
-
-          return { lunesOcupados, juevesOcupados };
-        } catch (error) {
-          console.error("Error fetching ocupados:", error);
-          return { lunesOcupados: new Set(), juevesOcupados: new Set() };
-        }
-      }
-
-      function updateHorarioOptions() {
-        fetchOcupados().then(({ lunesOcupados, juevesOcupados }) => {
-          const selectedDia = document.querySelector(
-            'input[name="diaAtencion"]:checked'
-          )?.value;
-          const horarioSelect = document.getElementById("horario");
-          const options = horarioSelect.options;
-
-          for (let i = 0; i < options.length; i++) {
-            const option = options[i];
-            const hora = option.value;
-
-            if (selectedDia === "Lunes" && lunesOcupados.has(hora)) {
-              option.disabled = true;
-            } else if (selectedDia === "Jueves" && juevesOcupados.has(hora)) {
-              option.disabled = true;
-            } else {
-              option.disabled = false;
-            }
-          }
-        });
-      }
-
       document
         .getElementById("turnoForm")
         .addEventListener("submit", async function (event) {
@@ -188,6 +142,17 @@
             'input[name="diaAtencion"]:checked'
           ).value;
           const horario = document.getElementById("horario").value;
+
+          // Verificar disponibilidad
+          const disponibilidadResponse = await fetch(
+            `http://localhost:5000/api/disponibilidad?dia=${diaAtencion}&hora=${horario}`
+          );
+          const disponibilidad = await disponibilidadResponse.json();
+
+          if (disponibilidad.ocupado) {
+            alert("El turno para el horario seleccionado ya está ocupado.");
+            return;
+          }
 
           const turno = {
             nombre: nombres,
@@ -208,7 +173,7 @@
 
             if (response.ok) {
               alert("Turno registrado exitosamente");
-              window.location.href = "index.html";
+              window.location.href = "index.html"; // Redirigir a la página principal
             } else {
               alert("Error al registrar el turno");
             }
@@ -218,15 +183,6 @@
           }
         });
 
-      document
-        .querySelectorAll('input[name="diaAtencion"]')
-        .forEach((input) => {
-          input.addEventListener("change", updateHorarioOptions);
-        });
-
-      // Inicializar las opciones del horario
-      updateHorarioOptions();
-
       // Validación del número de teléfono
       var telefonoInput = document.getElementById("telefono");
       telefonoInput.addEventListener("input", function () {
@@ -235,6 +191,29 @@
         telefono = telefono.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3"); // Formatear el número de teléfono
         telefonoInput.value = telefono;
       });
+
+      // Función para cargar disponibilidad y actualizar opciones
+      async function loadAvailability() {
+        const dias = ["Lunes", "Jueves"];
+        for (let dia of dias) {
+          for (let option of document.querySelectorAll(
+            "select#horario option"
+          )) {
+            const horario = option.value;
+            const disponibilidadResponse = await fetch(
+              `http://localhost:5000/api/disponibilidad?dia=${dia}&hora=${horario}`
+            );
+            const disponibilidad = await disponibilidadResponse.json();
+
+            if (disponibilidad.ocupado) {
+              option.disabled = true;
+            }
+          }
+        }
+      }
+
+      // Cargar disponibilidad al inicio
+      loadAvailability();
     </script>
   </body>
 </html>

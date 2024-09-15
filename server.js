@@ -25,31 +25,66 @@ const turnoSchema = new mongoose.Schema({
   nombre: String,
   telefono: String,
   email: String,
-  dia: String,
-  hora: String,
+  dia: String, // Día de la semana
+  fecha: Date, // Fecha específica del turno
+  hora: String, // Hora del turno
 });
 
-// Crear un modelo basado en el esquema
 const Turno = mongoose.model("Turno", turnoSchema);
+
+// Definir un esquema para la disponibilidad
+const disponibilidadSchema = new mongoose.Schema({
+  dia: String, // Día de la semana
+  hora: String, // Hora del turno
+  ocupado: Boolean, // Estado de ocupación
+});
+
+const Disponibilidad = mongoose.model("Disponibilidad", disponibilidadSchema);
 
 // Ruta para agregar turnos a la base de datos
 app.post("/api/turnos", async (req, res) => {
   try {
     const nuevoTurno = new Turno(req.body);
     await nuevoTurno.save();
+
+    // Actualizar disponibilidad
+    await Disponibilidad.findOneAndUpdate(
+      { dia: req.body.dia, hora: req.body.hora },
+      { ocupado: true },
+      { upsert: true }
+    );
+
     res.status(201).send("Turno registrado con éxito");
   } catch (error) {
     res.status(400).send("Error registrando el turno");
   }
 });
 
-// Ruta para obtener los turnos ocupados
-app.get("/api/turnos", async (req, res) => {
+// Ruta para obtener disponibilidad
+app.get("/api/disponibilidad", async (req, res) => {
+  const { dia, hora } = req.query;
+
   try {
-    const turnos = await Turno.find();
-    res.status(200).json(turnos);
+    const disponibilidad = await Disponibilidad.findOne({ dia, hora });
+    res.status(200).json(disponibilidad || { ocupado: false });
   } catch (error) {
-    res.status(500).send("Error al obtener los turnos");
+    res.status(500).send("Error al obtener la disponibilidad");
+  }
+});
+
+// Ruta para actualizar disponibilidad
+app.post("/api/disponibilidad", async (req, res) => {
+  const { dia, hora, ocupado } = req.body;
+
+  try {
+    await Disponibilidad.findOneAndUpdate(
+      { dia, hora },
+      { ocupado },
+      { upsert: true }
+    );
+    res.status(200).send("Disponibilidad actualizada con éxito");
+  } catch (error) {
+    res.status(400).send("Error al actualizar la disponibilidad");
   }
 });
 
