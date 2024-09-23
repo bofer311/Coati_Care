@@ -8,7 +8,7 @@ const app = express();
 app.use(bodyParser.json());
 
 // Conectar a MongoDB
-mongoose.connect("mongodb://localhost:27017/turnosDB", {
+mongoose.connect("mongodb://localhost:27017/TurnosDraIrrazabal", {
   useNewUrlParser: true,
   useUnifiedTopology: true,
 });

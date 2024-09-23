@@ -8,6 +8,12 @@ require("dotenv").config();
 const app = express();
 app.use(cors());
 
+const corsOptions = {
+  origin: "https://drairrazabal.com.ar", // Cambia esto a tu dominio
+  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+  credentials: true, // Si necesitas cookies o autenticación
+};
+
 // Middleware para analizar el cuerpo de las solicitudes (body-parser)
 app.use(bodyParser.json());
 
@@ -25,18 +31,18 @@ const turnoSchema = new mongoose.Schema({
   nombre: String,
   telefono: String,
   email: String,
-  dia: String, // Día de la semana
-  fecha: Date, // Fecha específica del turno
-  hora: String, // Hora del turno
+  dia: String,
+  fecha: Date,
+  hora: String,
 });
 
 const Turno = mongoose.model("Turno", turnoSchema);
 
 // Definir un esquema para la disponibilidad
 const disponibilidadSchema = new mongoose.Schema({
-  dia: String, // Día de la semana
-  hora: String, // Hora del turno
-  ocupado: Boolean, // Estado de ocupación
+  dia: String,
+  hora: String,
+  ocupado: Boolean,
 });
 
 const Disponibilidad = mongoose.model("Disponibilidad", disponibilidadSchema);
@@ -46,14 +52,11 @@ app.post("/api/turnos", async (req, res) => {
   try {
     const nuevoTurno = new Turno(req.body);
     await nuevoTurno.save();
-
-    // Actualizar disponibilidad
     await Disponibilidad.findOneAndUpdate(
       { dia: req.body.dia, hora: req.body.hora },
       { ocupado: true },
       { upsert: true }
     );
-
     res.status(201).send("Turno registrado con éxito");
   } catch (error) {
     res.status(400).send("Error registrando el turno");
@@ -63,7 +66,6 @@ app.post("/api/turnos", async (req, res) => {
 // Ruta para obtener disponibilidad
 app.get("/api/disponibilidad", async (req, res) => {
   const { dia, hora } = req.query;
-
   try {
     const disponibilidad = await Disponibilidad.findOne({ dia, hora });
     res.status(200).json(disponibilidad || { ocupado: false });
@@ -75,7 +77,6 @@ app.get("/api/disponibilidad", async (req, res) => {
 // Ruta para actualizar disponibilidad
 app.post("/api/disponibilidad", async (req, res) => {
   const { dia, hora, ocupado } = req.body;
-
   try {
     await Disponibilidad.findOneAndUpdate(
       { dia, hora },
@@ -89,7 +90,9 @@ app.post("/api/disponibilidad", async (req, res) => {
 });
 
 // Escuchar en el puerto 5000
-const PORT = 5000;
-app.listen(PORT, () => {
-  console.log(`Servidor escuchando en http://localhost:${PORT}`);
+const PORT = 5001;
+app.listen(PORT, "0.0.0.0", () => {
+  console.log(
+    `Servidor escuchando en http://vps-4314527-x.dattaweb.com:${PORT}`
+  );
 });

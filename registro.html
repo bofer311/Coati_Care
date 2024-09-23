@@ -16,14 +16,12 @@
         background-repeat: no-repeat;
         background-position: center;
       }
-
       .container {
         display: flex;
         justify-content: center;
         align-items: center;
         min-height: 100vh;
       }
-
       .form-container {
         background-color: rgba(255, 255, 255, 0.9);
         padding: 30px;
@@ -36,8 +34,8 @@
     <div class="container">
       <div class="col-lg-6">
         <div class="form-container">
-          <h2 class="text-center">Solicite su Turno</h2>
-          <form id="turnoForm">
+          <h2 class="text-center">Solicite su turno</h2>
+          <form id="turnosForm">
             <div class="form-group">
               <label for="nombres">Nombres:</label>
               <input
@@ -56,7 +54,7 @@
                 class="form-control"
                 id="telefono"
                 name="telefono"
-                placeholder="Dejanos tu número"
+                placeholder="Déjanos tu número"
                 required
               />
               <small id="telefonoHelp" class="form-text text-muted"
@@ -76,7 +74,7 @@
               />
             </div>
             <div class="pagina">
-              <div class="titulo">Turno disponible</div>
+              <div class="titulo">Turnos disponibles</div>
               <br />
               <div class="campo">
                 <div class="label">Día de atención:</div>
@@ -131,10 +129,9 @@
     </div>
     <script>
       document
-        .getElementById("turnoForm")
+        .getElementById("turnosForm")
         .addEventListener("submit", async function (event) {
           event.preventDefault();
-
           const nombres = document.getElementById("nombres").value;
           const telefono = document.getElementById("telefono").value;
           const email = document.getElementById("correo").value;
@@ -144,42 +141,54 @@
           const horario = document.getElementById("horario").value;
 
           // Verificar disponibilidad
-          const disponibilidadResponse = await fetch(
-            `http://localhost:5000/api/disponibilidad?dia=${diaAtencion}&hora=${horario}`
-          );
-          const disponibilidad = await disponibilidadResponse.json();
-
-          if (disponibilidad.ocupado) {
-            alert("El turno para el horario seleccionado ya está ocupado.");
-            return;
-          }
-
-          const turno = {
-            nombre: nombres,
-            telefono: telefono,
-            email: email,
-            dia: diaAtencion,
-            hora: horario,
-          };
-
           try {
-            const response = await fetch("http://localhost:5000/api/turnos", {
-              method: "POST",
-              headers: {
-                "Content-Type": "application/json",
-              },
-              body: JSON.stringify(turno),
-            });
+            const disponibilidadResponse = await fetch(
+              `http://vps-4314527-x.dattaweb.com:5001/api/disponibilidad?dia=${diaAtencion}&hora=${horario}`
+            );
 
-            if (response.ok) {
-              alert("Turno registrado exitosamente");
-              window.location.href = "index.html"; // Redirigir a la página principal
-            } else {
-              alert("Error al registrar el turno");
+            if (!disponibilidadResponse.ok) {
+              const errorText = await disponibilidadResponse.text();
+              throw new Error(
+                `Error al verificar disponibilidad: ${errorText}`
+              );
             }
+
+            const disponibilidad = await disponibilidadResponse.json();
+            if (disponibilidad.ocupado) {
+              alert("El turno para el horario seleccionado ya está ocupado.");
+              return;
+            }
+
+            const turnos = {
+              nombre: nombres,
+              telefono: telefono,
+              email: email,
+              dia: diaAtencion,
+              hora: horario,
+              fecha: new Date().toISOString(), // Agrega la fecha actual
+            };
+
+            const response = await fetch(
+              "http://vps-4314527-x.dattaweb.com:5001/api/turnos",
+              {
+                method: "POST",
+                headers: {
+                  "Content-Type": "application/json",
+                },
+                body: JSON.stringify(turnos),
+              }
+            );
+
+            if (!response.ok) {
+              const errorText = await response.text();
+              throw new Error(`Error al registrar el turno: ${errorText}`);
+            }
+
+            alert("Turno registrado exitosamente");
+            window.location.href = "https://drairrazabal.com.ar"; // Redirigir a la página principal
           } catch (error) {
             console.error("Error:", error);
-            alert("Error al registrar el turno");
+            alert(error.message);
           }
         });
 
@@ -200,20 +209,32 @@
             "select#horario option"
           )) {
             const horario = option.value;
-            const disponibilidadResponse = await fetch(
-              `http://localhost:5000/api/disponibilidad?dia=${dia}&hora=${horario}`
-            );
-            const disponibilidad = await disponibilidadResponse.json();
+            try {
+              const disponibilidadResponse = await fetch(
+                `http://vps-4314527-x.dattaweb.com:5001/api/disponibilidad?dia=${dia}&hora=${horario}`
+              );
 
-            if (disponibilidad.ocupado) {
-              option.disabled = true;
+              if (!disponibilidadResponse.ok) {
+                const errorText = await disponibilidadResponse.text();
+                console.error(
+                  `Error al verificar disponibilidad para ${dia} ${horario}: ${errorText}`
+                );
+                continue; // Saltar a la siguiente iteración
+              }
+
+              const disponibilidad = await disponibilidadResponse.json();
+              if (disponibilidad.ocupado) {
+                option.disabled = true; // Deshabilitar opción ocupada
+              }
+            } catch (error) {
+              console.error("Error:", error);
             }
           }
         }
       }
 
-      // Cargar disponibilidad al inicio
-      loadAvailability();
+      // Cargar disponibilidad al cargar la página
+      window.addEventListener("DOMContentLoaded", loadAvailability);
     </script>
   </body>
 </html>
