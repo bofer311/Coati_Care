@@ -89,7 +89,7 @@ app.post("/api/disponibilidad", async (req, res) => {
   }
 });
 
-// Escuchar en el puerto 5000
+// Escuchar en el puerto 5001
 const PORT = 5001;
 app.listen(PORT, "0.0.0.0", () => {
   console.log(
