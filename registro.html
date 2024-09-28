@@ -133,7 +133,9 @@
         .addEventListener("submit", async function (event) {
           event.preventDefault();
           const nombres = document.getElementById("nombres").value;
-          const telefono = document.getElementById("telefono").value;
+          const telefono = document
+            .getElementById("telefono")
+            .value.replace(/\D/g, ""); // Eliminar caracteres no numéricos
           const email = document.getElementById("correo").value;
           const diaAtencion = document.querySelector(
             'input[name="diaAtencion"]:checked'
@@ -143,7 +145,7 @@
           // Verificar disponibilidad
           try {
             const disponibilidadResponse = await fetch(
-              `http://vps-4314527-x.dattaweb.com:5001/api/disponibilidad?dia=${diaAtencion}&hora=${horario}`
+              `https://vps-4314527-x.dattaweb.com/api/disponibilidad?dia=${diaAtencion}&hora=${horario}`
             );
 
             if (!disponibilidadResponse.ok) {
@@ -169,7 +171,7 @@
             };
 
             const response = await fetch(
-              "http://vps-4314527-x.dattaweb.com:5001/api/turnos",
+              "https://vps-4314527-x.dattaweb.com/api/turnos",
               {
                 method: "POST",
                 headers: {
@@ -193,13 +195,16 @@
         });
 
       // Validación del número de teléfono
-      var telefonoInput = document.getElementById("telefono");
-      telefonoInput.addEventListener("input", function () {
-        var telefono = telefonoInput.value;
-        telefono = telefono.replace(/\D/g, ""); // Eliminar caracteres que no sean dígitos
-        telefono = telefono.replace(/^(\d{2})(\d{4})(\d{4})$/, "($1) $2-$3"); // Formatear el número de teléfono
-        telefonoInput.value = telefono;
-      });
+      document
+        .getElementById("telefono")
+        .addEventListener("input", function () {
+          let telefono = this.value.replace(/\D/g, ""); // Eliminar caracteres que no sean dígitos
+          if (telefono.length > 10) telefono = telefono.slice(0, 10); // Limitar a 10 dígitos
+          this.value = telefono.replace(
+            /^(\d{2})(\d{4})(\d{4})$/,
+            "($1) $2-$3"
+          ); // Formatear el número
+        });
 
       // Función para cargar disponibilidad y actualizar opciones
       async function loadAvailability() {
@@ -211,9 +216,8 @@
             const horario = option.value;
             try {
               const disponibilidadResponse = await fetch(
-                `http://vps-4314527-x.dattaweb.com:5001/api/disponibilidad?dia=${dia}&hora=${horario}`
+                `https://vps-4314527-x.dattaweb.com/api/disponibilidad?dia=${dia}&hora=${horario}`
               );
-
               if (!disponibilidadResponse.ok) {
                 const errorText = await disponibilidadResponse.text();
                 console.error(
@@ -221,7 +225,6 @@
                 );
                 continue; // Saltar a la siguiente iteración
               }
-
               const disponibilidad = await disponibilidadResponse.json();
               if (disponibilidad.ocupado) {
                 option.disabled = true; // Deshabilitar opción ocupada

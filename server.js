@@ -2,17 +2,19 @@ const express = require("express");
 const mongoose = require("mongoose");
 const bodyParser = require("body-parser");
 const cors = require("cors");
+const https = require("https");
+const fs = require("fs");
 require("dotenv").config();
 
 // Crear una aplicación Express
 const app = express();
 app.use(cors());
 
-const corsOptions = {
-  origin: "https://drairrazabal.com.ar", // Cambia esto a tu dominio
-  methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
-  credentials: true, // Si necesitas cookies o autenticación
-};
+// const corsOptions = {
+//   origin: "https://drairrazabal.com.ar", // Cambia esto a tu dominio
+//   methods: "GET,HEAD,PUT,PATCH,POST,DELETE",
+//   credentials: true, // Si necesitas cookies o autenticación
+// };
 
 // Middleware para analizar el cuerpo de las solicitudes (body-parser)
 app.use(bodyParser.json());
@@ -89,10 +91,20 @@ app.post("/api/disponibilidad", async (req, res) => {
   }
 });
 
-// Escuchar en el puerto 5001
-const PORT = 5001;
-app.listen(PORT, "0.0.0.0", () => {
+// Opciones del servidor HTTPS
+const options = {
+  key: fs.readFileSync(
+    "/etc/letsencrypt/live/vps-4314527-x.dattaweb.com/privkey.pem"
+  ),
+  cert: fs.readFileSync(
+    "/etc/letsencrypt/live/vps-4314527-x.dattaweb.com/fullchain.pem"
+  ),
+};
+
+// Escuchar en el puerto 443 para HTTPS
+const PORT = 443;
+https.createServer(options, app).listen(PORT, "0.0.0.0", () => {
   console.log(
-    `Servidor escuchando en http://vps-4314527-x.dattaweb.com:${PORT}`
+    `Servidor HTTPS escuchando en https://vps-4314527-x.dattaweb.com:${PORT}`
   );
 });
