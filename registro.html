@@ -208,33 +208,41 @@
 
       // Función para cargar disponibilidad y actualizar opciones
       async function loadAvailability() {
-        const dias = ["Lunes", "Jueves"];
-        for (let dia of dias) {
-          for (let option of document.querySelectorAll(
-            "select#horario option"
-          )) {
-            const horario = option.value;
-            try {
-              const disponibilidadResponse = await fetch(
-                `https://vps-4314527-x.dattaweb.com/api/disponibilidad?dia=${dia}&hora=${horario}`
+        const diaSeleccionado = document.querySelector(
+          'input[name="diaAtencion"]:checked'
+        )?.value;
+        if (!diaSeleccionado) return; // Si no hay un día seleccionado, salir
+
+        const horarioOptions = document.querySelectorAll(
+          "select#horario option"
+        );
+        for (let option of horarioOptions) {
+          const horario = option.value;
+          try {
+            const disponibilidadResponse = await fetch(
+              `https://vps-4314527-x.dattaweb.com/api/disponibilidad?dia=${diaSeleccionado}&hora=${horario}`
+            );
+            if (!disponibilidadResponse.ok) {
+              const errorText = await disponibilidadResponse.text();
+              console.error(
+                `Error al verificar disponibilidad para ${diaSeleccionado} ${horario}: ${errorText}`
               );
-              if (!disponibilidadResponse.ok) {
-                const errorText = await disponibilidadResponse.text();
-                console.error(
-                  `Error al verificar disponibilidad para ${dia} ${horario}: ${errorText}`
-                );
-                continue; // Saltar a la siguiente iteración
-              }
-              const disponibilidad = await disponibilidadResponse.json();
-              if (disponibilidad.ocupado) {
-                option.disabled = true; // Deshabilitar opción ocupada
-              }
-            } catch (error) {
-              console.error("Error:", error);
+              continue; // Saltar a la siguiente iteración
             }
+            const disponibilidad = await disponibilidadResponse.json();
+            option.disabled = disponibilidad.ocupado; // Deshabilitar opción ocupada
+          } catch (error) {
+            console.error("Error:", error);
           }
         }
       }
+
+      // Cargar disponibilidad al seleccionar un día
+      document
+        .querySelectorAll('input[name="diaAtencion"]')
+        .forEach((radio) => {
+          radio.addEventListener("change", loadAvailability);
+        });
 
       // Cargar disponibilidad al cargar la página
       window.addEventListener("DOMContentLoaded", loadAvailability);
