@@ -1,0 +1,197 @@
+[{
+  "_id": {
+    "$oid": "66e73e1a2d5ba02408606b4b"
+  },
+  "nombre": "Juan Pérez",
+  "telefono": "123456789",
+  "email": "juanperez@example.com",
+  "dia": "Lunes",
+  "hora": "16:00"
+},
+{
+  "_id": {
+    "$oid": "66e74cd189bc10f89c8ede93"
+  },
+  "nombre": "matheo",
+  "telefono": "(37) 6503-7757",
+  "email": "ferbogado59@gmail.com",
+  "dia": "Jueves",
+  "hora": "17:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e74cf289bc10f89c8ede95"
+  },
+  "nombre": "Susana",
+  "telefono": "(37) 6588-4747",
+  "email": "ferbogado@gmail.com",
+  "dia": "Lunes",
+  "hora": "16:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e74d3689bc10f89c8ede97"
+  },
+  "nombre": "Susana",
+  "telefono": "(37) 6588-4747",
+  "email": "ferbogado@gmail.com",
+  "dia": "Lunes",
+  "hora": "16:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e74d3f89bc10f89c8ede99"
+  },
+  "nombre": "Susana",
+  "telefono": "(37) 6588-4747",
+  "email": "ferbogado@gmail.com",
+  "dia": "Jueves",
+  "hora": "17:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e74ed689bc10f89c8ede9b"
+  },
+  "nombre": "Roberto Toto",
+  "telefono": "(34) 2384-2387",
+  "email": "robertototo@gmail.com",
+  "dia": "Lunes",
+  "hora": "16:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e74f7d89bc10f89c8ede9d"
+  },
+  "nombre": "Roberto Toto",
+  "telefono": "(34) 2384-2387",
+  "email": "robertototo@gmail.com",
+  "dia": "Lunes",
+  "hora": "16:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e74fcb89bc10f89c8ede9f"
+  },
+  "nombre": "robert",
+  "telefono": "(36) 3463-7876",
+  "email": "27488211@roquegonzalez.org",
+  "dia": "Lunes",
+  "hora": "16:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e750a389bc10f89c8edea1"
+  },
+  "nombre": "Chuni Reinek",
+  "telefono": "(37) 6509-9999",
+  "email": "chuni@gmail.com",
+  "dia": "Lunes",
+  "hora": "17:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e750ef89bc10f89c8edea3"
+  },
+  "nombre": "Juan Manuel I",
+  "telefono": "(37) 6506-6666",
+  "email": "juanma@gmail.com",
+  "dia": "Jueves",
+  "hora": "16:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e7545e6812b9eba1b5d962"
+  },
+  "nombre": "robert",
+  "telefono": "(36) 3463-7876",
+  "email": "27488211@roquegonzalez.org",
+  "dia": "Lunes",
+  "hora": "16:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e7546d6812b9eba1b5d964"
+  },
+  "nombre": "Juan Manuel I",
+  "telefono": "(37) 6506-6666",
+  "email": "juanma@gmail.com",
+  "dia": "Lunes",
+  "hora": "16:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e754d76812b9eba1b5d968"
+  },
+  "nombre": "robert",
+  "telefono": "(36) 3463-7876",
+  "email": "27488211@roquegonzalez.org",
+  "dia": "Lunes",
+  "hora": "17:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e758a3093933289f5b3c5b"
+  },
+  "nombre": "Angeles",
+  "telefono": "(37) 6594-9498",
+  "email": "any@gmail.com",
+  "dia": "Lunes",
+  "hora": "16:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e758e8093933289f5b3c6f"
+  },
+  "nombre": "Angeles",
+  "telefono": "(37) 6594-9498",
+  "email": "any@gmail.com",
+  "dia": "Lunes",
+  "hora": "19:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e81b49093933289f5b3c93"
+  },
+  "nombre": "Victoria",
+  "telefono": "(37) 6429-2929",
+  "email": "vicky@gmail.com",
+  "dia": "Jueves",
+  "hora": "16:30",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e9e5780d74e968ab1d1bd5"
+  },
+  "nombre": "Milagros Angeles",
+  "telefono": "(37) 6502-3333",
+  "email": "fernandobogado_311@yahoo.com.ar",
+  "dia": "Lunes",
+  "hora": "17:00",
+  "__v": 0
+},
+{
+  "_id": {
+    "$oid": "66e9ee5a0d74e968ab1d1bf9"
+  },
+  "nombre": "Victoria",
+  "telefono": "(37) 6429-2929",
+  "email": "vicky@gmail.com",
+  "dia": "Jueves",
+  "hora": "17:30",
+  "__v": 0
+}]
